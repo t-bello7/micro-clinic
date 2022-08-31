@@ -7,5 +7,18 @@ CREATE TABLE medical_histories (
   admitted_at TIMESTAMP NOT NULL,
   patient_id INT NOT NULL,
   status VARCHAR(250) NOT NULL,
+  PRIMARY KEY(id),
+  CONSTRAINT fk_patient_constraint FOREIGN KEY(patient_id) REFERENCES patients(id)
+);
+
+-- invoices table 
+CREATE TABLE invoices (
+  id INT NOT NULL GENERATED ALWAYS AS IDENTITY,
+  total_amount FLOAT(2) NOT NULL,
+  generated_at TIMESTAMP NOT NULL,
+  payed_at TIMESTAMP NOT NULL,
+  medical_history_id INT NOT NULL,
   PRIMARY KEY(id)
 );
+
+
